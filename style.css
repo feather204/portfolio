@@ -1,0 +1,34 @@
+:root {
+    /* https://coolors.co/5d737e-64b6ac-c0fdfb-daffef-fcfffd */
+    --primary-bg: #FCFFFD;
+    --secondary-bg: #DAFFEF;
+    --primary-text: #5D737E;
+    --secondary: #C0FDFB;
+    --highlight: #64B6AC;
+    --standard-gap: 40px;
+}
+
+@font-face {
+  font-family: 'Nova Flat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/NovaFlat-Regular.ttf) format('truetype');
+}
+
+body {
+    font-family: 'Nova Flat', Helvetica, sans-serif;
+    background: var(--primary-bg);
+    color: var(--primary-text);
+    border-top: 20px solid var(--secondary-bg);
+}
+
+
+#projects article {
+    background: #eee;
+    margin: 40px;
+}
+
+nav {
+    background: var(--secondary);
+}
