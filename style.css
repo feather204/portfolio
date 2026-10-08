@@ -74,6 +74,7 @@ nav ul li {
 
 nav ul li a {
     color: var(--primary-bg);
+    text-shadow: 2px 2px 0 var(--tertiary-bg);
     text-decoration: none;
     font-size: 1.8em;
     padding: 1rem;
