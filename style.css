@@ -1,34 +1,118 @@
 :root {
-    /* https://coolors.co/5d737e-64b6ac-c0fdfb-daffef-fcfffd */
-    --primary-bg: #FCFFFD;
-    --secondary-bg: #DAFFEF;
-    --primary-text: #5D737E;
-    --secondary: #C0FDFB;
-    --highlight: #64B6AC;
-    --standard-gap: 40px;
+    /* https://coolors.co/1f363d-e6e8e6-8d80ad-a22c29-35393c */
+    --primary-bg: #E6E8E6;
+    --secondary-bg: #8D80AD;
+    --tertiary-bg: #1F363D;
+    --primary-text: #35393C;
+    --highlight: #A22C29;
+    --page-margin: 6rem;
 }
 
 @font-face {
-  font-family: 'Nova Flat';
+  font-family: 'Quantico';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(fonts/NovaFlat-Regular.ttf) format('truetype');
+  src: url(fonts/Quantico-Regular.ttf) format('truetype');
 }
 
 body {
-    font-family: 'Nova Flat', Helvetica, sans-serif;
+    font-family: 'Quantico', Helvetica, sans-serif;
     background: var(--primary-bg);
     color: var(--primary-text);
     border-top: 20px solid var(--secondary-bg);
+    margin: 0;
 }
 
+h2 {
+    font-size: 3em;
+    font-weight: normal;
+    border-bottom:1px solid var(--secondary-bg);
+    margin-top: 1rem;
+}
+
+p {
+    font-size: 1.4em;
+    line-height: 1.4;
+}
+
+header {
+    text-align: center;
+    padding: 1rem 0;
+    margin: 0 var(--page-margin)
+}
+
+#hero h1 {
+    font-size: 4em;
+    text-align: center;
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+main {
+    margin: 0 var(--page-margin);
+}
+
+#logo img {
+    width: 160px;
+    height: 110px;
+}
+
+#logo img:hover {
+    transform: scale(1.1);
+}
+
+#projects article h3 {
+    font-size: 2em;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+#projects article img {
+    border-radius: 20%;
+}
 
 #projects article {
-    background: #eee;
-    margin: 40px;
+    background: var(--secondary-bg);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-shadow: 10px 10px;
 }
 
 nav {
-    background: var(--secondary);
+    background: var(--tertiary-bg);
+    border-radius: 30px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    color: var(--primary-bg);
+    text-decoration: none;
+    font-size: 1.8em;
+    padding: 1rem 2rem;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background: color-mix(in oklab, var(--tertiary-bg), black 30%);
+    transform: scale(1.05);
+}
+
+footer {
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 0.8em;
 }
