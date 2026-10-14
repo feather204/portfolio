@@ -4,7 +4,7 @@
     --tertiary-bg: #40334f;
     --primary-text: #1d2021;
     --highlight: #baa3ff;
-    --page-margin: 6rem;
+    --page-margin: 1rem;
 }
 
 @font-face {
@@ -16,6 +16,11 @@
 }
 
 body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+
     font-family: 'Quantico', Helvetica, sans-serif;
     background: var(--primary-bg);
     color: var(--primary-text);
@@ -62,22 +67,25 @@ nav {
 }
 
 nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     list-style-type: none;
     margin: 0;
     padding: 0;
+    gap: 0.5rem;
 }
 
 nav ul li {
-    display: inline-block;
-    width: 150px;
+    width: auto;
 }
 
 nav ul li a {
     color: var(--primary-bg);
     text-shadow: 2px 2px 0 var(--tertiary-bg);
     text-decoration: none;
-    font-size: 1.8em;
-    padding: 1rem;
+    font-size: 1.4em;
+    padding: 0.5rem;
     border-radius: 5px;
     display: block;
     transition: transform 0.2s;
@@ -98,24 +106,35 @@ main {
 }
 
 #hero h1 {
-    font-size: 4em;
+    font-size: 2em;
     text-align: center;
     line-height: 1.1;
-    letter-spacing: -2px;
+    letter-spacing: -1px;
     text-shadow: 3px 3px 0 var(--secondary-bg);
 }
 
 .section-title {
     font-size: 3em;
     border-bottom: 6px solid var(--secondary-bg);
-    margin-top: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
     text-shadow: 2px 2px 0 var(--secondary-bg);
+}
+
+/* Prompt: Create a CSS grid in the #projects section where the heading has it's own row, the articles are in a 3 column layout above 1000px and in a 2 column layout above 600px. Use @media queries to handle the grid changes. */
+#projects {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+#projects .section-title {
+    grid-column: 1 / -1;
 }
 
 .project {
     background: var(--secondary-bg);
     padding: 1.5rem;
-    margin-bottom: 2rem;
     border-radius: 5px;
     box-shadow: 6px 6px 6px var(--tertiary-bg);
     transition: transform 0.2s;
@@ -148,6 +167,60 @@ main {
 
 .project img:hover {
     transform: scale(1.1);
+}
+
+@media (min-width: 600px) {
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    nav ul li a {
+        font-size: 1.8em;
+        padding: 1rem;
+    }
+
+    #projects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    :root {
+        --page-margin: 2rem;
+    }
+}
+
+@media (min-width: 800px) {
+    #hero h1 {
+        font-size: 2.5em;
+    }
+
+    :root {
+        --page-margin: 3rem;
+    }
+}
+
+@media (min-width: 1000px) {
+    #hero h1 {
+        font-size: 3.25em;
+    }
+
+    #projects {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    :root {
+        --page-margin: 4rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    #hero h1 {
+        font-size: 4em;
+    }
+
+    :root {
+        --page-margin: 6rem;
+    }
 }
 
 #contact address {
