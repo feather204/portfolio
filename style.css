@@ -3,7 +3,7 @@
     --secondary-bg: #8D80AD;
     --tertiary-bg: #40334f;
     --primary-text: #1d2021;
-    --highlight: #baa3ff;
+    --highlight: #683dec;
     --page-margin: 1rem;
 }
 
@@ -49,8 +49,8 @@ header {
 }
 
 #logo img {
-    width: 160px;
-    height: 110px;
+    width: 158.5px;
+    height: 122px;
     transition: transform 0.2s;
 }
 
@@ -233,7 +233,7 @@ main {
 }
 
 #contact p {
-    color: var(--primary-bg);
+    color: var(--primary-text);
     font-size: 1.2em;
     margin: 0;
 }
