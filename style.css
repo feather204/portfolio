@@ -5,6 +5,20 @@
     --primary-text: #1d2021;
     --highlight: #683dec;
     --page-margin: 1rem;
+    --light-text: #E6E8E6;
+}
+
+body.dark-mode {
+    --primary-bg: #1d2021;
+    --secondary-bg: #40334f;
+    --tertiary-bg: #191420;
+    --primary-text: #e6e8e6;
+    --highlight: #a88beb;
+    --light-text: #E6E8E6;
+}
+
+body.dark-mode #logo img {
+    filter: invert(1);
 }
 
 @font-face {
@@ -13,6 +27,10 @@
   font-weight: 400;
   font-display: swap;
   src: url(fonts/Quantico-Regular.ttf) format('truetype');
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -27,6 +45,7 @@ body {
     border-top: 20px solid var(--secondary-bg);
     border-bottom: 20px solid var(--secondary-bg);
     margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 p {
@@ -36,6 +55,7 @@ p {
 
 a {
     color: var(--highlight);
+    transition: color 0.3s ease;
 }
 
 a:hover {
@@ -43,14 +63,16 @@ a:hover {
 }
 
 header {
-    text-align: center;
-    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
     margin: 0 var(--page-margin);
 }
 
 #logo img {
-    width: 158.5px;
-    height: 122px;
+    width: 80px;
+    height: auto;
     transition: transform 0.2s;
 }
 
@@ -59,14 +81,17 @@ header {
 }
 
 nav {
+    display: flex;
+    align-items: center;
     background: var(--secondary-bg);
     border-radius: 15px;
-    margin-top: 1rem;
-    text-align: center;
     box-shadow: 6px 6px 6px var(--tertiary-bg);
+    padding: 0.25rem 1rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 nav ul {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -77,23 +102,45 @@ nav ul {
 }
 
 nav ul li {
-    width: auto;
+    width: 150px;
+    flex: 1;
 }
 
 nav ul li a {
-    color: var(--primary-bg);
+    color: var(--light-text);
     text-shadow: 2px 2px 0 var(--tertiary-bg);
+    text-align: center;
     text-decoration: none;
     font-size: 1.6em;
     padding: 0.5rem;
-    border-radius: 5px;
+    border-radius: 10px;
     display: block;
-    transition: transform 0.2s;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s, background-color 0.3s ease;
 }
 
 nav ul li a:hover {
-    background: color-mix(in oklab, var(--secondary-bg), white 20%);
-    transform: scale(1.05);
+    background: color-mix(in oklab, var(--secondary-bg), white 10%);
+    transform: scale(1.025);
+}
+
+/* Prompt: Use the button with id="dark-mode-toggle" as a base. Adjust the button location to the far right of the nav bar, matching the style of other buttons on the page. */
+#dark-mode-toggle {
+    color: var(--primary-bg);
+    background: transparent;
+    border: 0;
+    font: inherit;
+    font-size: 1.6em;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    text-shadow: 2px 2px 0 var(--tertiary-bg);
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s, background-color 0.2s;
+}
+
+#dark-mode-toggle:hover {
+    background: color-mix(in oklab, var(--secondary-bg), white 10%);
+    transform: scale(1.025);
 }
 
 main {
@@ -111,6 +158,7 @@ main {
     line-height: 1.1;
     letter-spacing: -1px;
     text-shadow: 3px 3px 0 var(--secondary-bg);
+    transition: text-shadow 0.3s ease;
 }
 
 .section-title {
@@ -119,6 +167,7 @@ main {
     margin-top: 2rem;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 0 var(--secondary-bg);
+    transition: border-color 0.3s ease, text-shadow 0.3s ease;
 }
 
 /* Prompt: Create a CSS grid in the #projects section where the heading has it's own row, the articles are in a 3 column layout above 1000px and in a 2 column layout above 600px. Use @media queries to handle the grid changes. */
@@ -137,22 +186,26 @@ main {
     padding: 1.5rem;
     border-radius: 5px;
     box-shadow: 6px 6px 6px var(--tertiary-bg);
-    transition: transform 0.2s;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, translate 0.2s;
 }
 
 .project:hover {
-    transform: translateY(-5px);
+    translate: 0 -5px;
+    border-color: var(--highlight);
+
 }
 
 .project h3 {
     font-size: 2em;
     margin: 0 0 1rem;
     text-shadow: 2px 2px 0 var(--tertiary-bg);
+    transition: text-shadow 0.3s ease;
 }
 
 .project h3 a {
-    color: var(--primary-bg);
+    color: var(--light-text);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .project h3 a:hover {
@@ -172,10 +225,15 @@ main {
 @media (min-width: 600px) {
     nav ul {
         flex-direction: row;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     nav ul li a {
+        font-size: 1.8em;
+        padding: 1rem;
+    }
+
+    #dark-mode-toggle {
         font-size: 1.8em;
         padding: 1rem;
     }
@@ -230,12 +288,14 @@ main {
     border-radius: 10px;
     text-align: center;
     box-shadow: 6px 6px 6px var(--tertiary-bg);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 #contact p {
     color: var(--primary-text);
     font-size: 1.2em;
     margin: 0;
+    transition: color 0.3s ease;
 }
 
 footer {
